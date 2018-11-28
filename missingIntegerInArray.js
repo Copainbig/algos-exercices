@@ -7,17 +7,21 @@ You can modify the input array in-place.
 const getFirstMissingPosInt = (array) => {
 
     let count = array.length-1
-    for(let i=0; i<array.length; i++){
+    let i = 0
+    while(i<count){
         if(array[i] <= 0){
             const tmp = array[i]
             array[i] = array[count]
             array[count] = tmp
             count--
         }
+        if(array[i]>0)
+            i++
     }
     count ++
 
-    for(let i=0; i <= count; i++){
+
+    for(let i=0; i < count; i++){
         if(Math.abs(array[i]) <= count){
             let index = Math.abs(array[i]) -1
             if(array[index] > 0)
@@ -36,12 +40,12 @@ const getFirstMissingPosInt = (array) => {
 const tab = [7,4,2,3,6,1,175,-3,0,0,-19]
 const tab1 = [1,1,1]
 const tab2 = [1,2,3]
+const error = [ 1, 0, -5, -2, -4, -3, 3, 2, 2, 0 ]
 console.log('input : ' + tab)
 console.log(getFirstMissingPosInt(tab))
 console.log('input : ' + tab1)
 console.log(getFirstMissingPosInt(tab1))
 console.log('input : ' + tab2)
 console.log(getFirstMissingPosInt(tab2))
-
-
-
+console.log('input : ' + error)
+console.log(getFirstMissingPosInt(error))

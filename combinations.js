@@ -41,7 +41,18 @@ function combineWithoutRepetitions(friends, table_size) {
 */
 
 function combineWithRepetitions(set, length){
+    if(length === 1){
+        return set.map(elt => [elt])
+    }
 
+    let result = []
+    set.forEach((elt, idx) => {
+        let rest = set.slice(idx)
+        let subCombine = combineWithRepetitions(rest, length-1)
+        subCombine.forEach(element => result.push([elt].concat(element)))
+    })
+
+    return result
 }
 
 
@@ -50,8 +61,11 @@ function combineWithRepetitions(set, length){
 const friends = ['Victor', 'Nico', 'Géraldine', 'Mathilde', 'Crilou', 'Lucas']
 console.log( ' >> COMBINATIONS WITHOUT REPETITIONS ')
 console.log(combineWithoutRepetitions(friends, 2))
-console.log('if we got ' + friends.length + ' friends, and a '+ 2 +' sized table, we have '+ combineWithRepetitions(friends,2).length + 'possible combinations')
+console.log('if we got ' + friends.length + ' friends, and a '+ 2 +' sized table, we have '+ combineWithRepetitions(friends,2).length + ' possible combinations')
 
 console.log( ' ------------------------ ')
 console.log( ' >> COMBINATIONS WITH REPETITIONS ')
+console.log(combineWithRepetitions(friends, 3))
+console.log('If we got ' + friends.length + ' colors choices. We need to paint 3 walls. There are : ' + combineWithRepetitions(friends, 3).length + ' combinations')
+
 
