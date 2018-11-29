@@ -12,8 +12,6 @@ const decode = (str) => {
     if(parseInt(str.substring(0,2)) < 27)
         return result + decode(str.substring(1)) + decode(str.substring(2))
     return result + decode(str.substring(1))
-
-    return result
 }
 
 //2nd approach

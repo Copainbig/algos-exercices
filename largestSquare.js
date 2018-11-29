@@ -27,7 +27,7 @@ const getLargestSquare = (matrix) => {
                 max = [acc[i][j], i-(acc[i][j]-1),j-(acc[i][j]-1)]
         }
     }
-
+    console.log(acc)
     return max
 
 }

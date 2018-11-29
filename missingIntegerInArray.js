@@ -20,7 +20,6 @@ const getFirstMissingPosInt = (array) => {
     }
     count ++
 
-
     for(let i=0; i < count; i++){
         if(Math.abs(array[i]) <= count){
             let index = Math.abs(array[i]) -1
